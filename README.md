@@ -1,27 +1,37 @@
-# GithubWebapp
+# Github Webapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+This project was created based on Shopify's Intern challenge as displayed below. I used Angular as my framework with GitHub API v4 (trying GraphQL for the first time).
 
-## Development server
+The prompt below is copy-pasted from a README file that Shopify provided.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+# Web Developer Intern Challenge
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Build a web app to search Github repositories, favourite repos, manage favourites.
 
-## Build
+## Instructions
+- **Reproduce the designs** provided in the [screenshots](screenshots/desktop.jpg)
+- Must use Github API **v3 or v4**
+- Typing in the search input field should **NOT** perform an API call
+- Hitting enter or clicking the "Search" button should perform an API call to Github
+- Performing a search should render a list of **10 repositories**
+	- Each item should
+		- render the name with owner *(Ex. shopify/polaris)* and link to the repo's page on Github
+		- render the name of the primary language
+		- render the latest release tag **if present**
+		- render the "Add" button **if the repo is not already favourited**
+		- clicking the "Add" button should add the repo to the favourites list
+- When the search input field is cleared, the list of results should cleared
+- When the number of favourites is **more than one**
+	- render a **list of favourited repositories**
+		- Each item should
+			- render the name with owner *(Ex. shopify/polaris)* and link to the repo's page on Github
+			- render the name of the primary language
+			- render the latest release tag if present
+			- render the "Remove" button **if the repo has been favourited**
+			- clicking the "Remove" button should remove the repo from the favourites list
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Notes
+- [Github Developer](https://developer.github.com/)
+- [Docs on how to create a personal access token to make request to the Github API](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)
