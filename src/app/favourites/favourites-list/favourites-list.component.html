@@ -1,3 +1,18 @@
-<p>
-  favourites-list works!
-</p>
+<table class="table table-sm table-hover">
+  <thead>
+  <tr>
+    <th scope="col">Name</th>
+    <th scope="col">Language</th>
+    <th scope="col">Latest Tag</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let i of tempList">
+    <td>{{ i.name }}</td>
+    <td>{{ i.language }}</td>
+    <td>{{ i.latestTag }}</td>
+    <td>Remove</td>
+  </tr>
+  </tbody>
+</table>
