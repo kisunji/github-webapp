@@ -7,11 +7,12 @@ import { Repo } from './repo.model';
 export class FavouritesService {
   favouritesChanged = new EventEmitter<Repo[]>();
 
-  private _favourites: Repo[] = [];
   constructor() {
   }
 
-  get favourites(): Repo[]{
+  private _favourites: Repo[] = [];
+
+  get favourites(): Repo[] {
     return this._favourites;
   }
 
@@ -20,7 +21,8 @@ export class FavouritesService {
     this.favouritesChanged.emit(this._favourites.slice());
   }
 
-  removeFromFavourites(id: number) {
-
+  removeFromFavourites(id: string) {
+    this._favourites = this._favourites.filter(repo => repo.id !== id);
+    this.favouritesChanged.emit(this._favourites.slice());
   }
 }

@@ -37,7 +37,7 @@ export class AppModule {
       uri: 'https://api.github.com/graphql',
       httpOptions: {
         headers: new HttpHeaders({
-          'Authorization': 'Bearer 320c5ba08a2449e39552906e8069aa7f5a58020c'
+          'Authorization': 'Bearer ddecf0c27220eb770a3cdb23bed7f576b4fc3645'
         })
       }
 

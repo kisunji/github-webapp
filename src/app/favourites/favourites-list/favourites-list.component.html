@@ -12,7 +12,7 @@
     <td>{{ i.name }}</td>
     <td>{{ i.primaryLanguage }}</td>
     <td>{{ i.latestTag }}</td>
-    <td>Remove</td>
+    <td><a style="cursor: pointer" (click)="onRemoveFavourite(i.id)">Remove</a></td>
   </tr>
   </tbody>
 </table>

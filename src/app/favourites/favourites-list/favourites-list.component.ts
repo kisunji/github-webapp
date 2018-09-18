@@ -20,4 +20,8 @@ export class FavouritesListComponent implements OnInit {
       }
     );
   }
+
+  onRemoveFavourite(id: string) {
+    this.favouritesService.removeFromFavourites(id);
+  }
 }

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
 import { Apollo } from 'apollo-angular';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Repo } from './repo.model';
-import { forEach } from 'async';
 
 const GitHubQuery = gql`
   query {
@@ -37,12 +36,22 @@ const GitHubQuery = gql`
   providedIn: 'root'
 })
 export class SearchService {
-  repoList: Repo[] = [];
-
-  // private result$: Observable<Repo[]>;
-  private result: Subscription;
+  //result$: Observable<Repo[]> = null;
+  result: Subscription;
 
   constructor(private apollo: Apollo) {
+  }
+
+  private _repoList: Repo[] = [
+    { id: '1', name: 'test1', primaryLanguage: 'Java', latestTag: 'v0.0.1' },
+    { id: '2', name: 'test2', primaryLanguage: 'Java', latestTag: 'v0.0.1' },
+    { id: '3', name: 'test3', primaryLanguage: 'Java', latestTag: 'v0.0.1' },
+    { id: '4', name: 'test4', primaryLanguage: 'Java', latestTag: 'v0.0.1' },
+    { id: '5', name: 'test5', primaryLanguage: 'Java', latestTag: 'v0.0.1' }
+  ];
+
+  get repoList(): Repo[] {
+    return this._repoList.slice();
   }
 
   search(searchVal: string) {
@@ -50,18 +59,26 @@ export class SearchService {
     this.result = this.apollo.query<any>({
       query: GitHubQuery
     }).pipe(
-      map((result, index) => {
-        const id = result.data.search.edges[ index ].node.id;
-        const name = result.data.search.edges[ index ].node.name;
-        const primaryLanguage = result.data.search.edges[ index ].node.primaryLanguage.name;
-        const tag = result.data.search.edges[ index ].node.releases.edges.length === 0
-                    ? ''
-                    : result.data.search.edges[ index ].node.releases.edges[ 0 ].node.tag.name;
-        this.repoList.push({ id: id, name: name, primaryLanguage: primaryLanguage, latestTag: tag });
-        return this.repoList.slice();
+      map(result => {
+        result.data.search.edges
+          .forEach((value) => {
+            const id = value.node.id;
+            const name = value.node.name;
+            const primaryLanguage = value.node.primaryLanguage === null
+              ? ''
+              : value.node.primaryLanguage.name;
+            const tag = value.node.releases.edges.length === 0
+              ? ''
+              : value.node.releases.edges[ 0 ].node.tag.name;
+            this._repoList.push({ id: id, name: name, primaryLanguage: primaryLanguage, latestTag: tag });
+          });
+        return this._repoList.slice();
       })
-    ).subscribe(data => console.log(data));
+    ).subscribe(
+      (data) => {
+        console.log(data);
+        this._repoList = data;
+      }
+    );
   }
-
-
 }
