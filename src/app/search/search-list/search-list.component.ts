@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FavouritesService } from '../../shared/favourites.service';
+import { Repo } from '../../shared/repo.model';
 
 @Component({
   selector: 'app-search-list',
@@ -6,17 +8,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-list.component.css']
 })
 export class SearchListComponent implements OnInit {
-  tempList = [
-    {name: 'test1', language: 'Java', latestTag: 'v0.0.1'},
-    {name: 'test2', language: 'Java', latestTag: 'v0.0.1'},
-    {name: 'test3', language: 'Java', latestTag: 'v0.0.1'},
-    {name: 'test4', language: 'Java', latestTag: 'v0.0.1'},
-    {name: 'test5', language: 'Java', latestTag: 'v0.0.1'}
+  tempList: Repo[] = [
+    {id: '1', name: 'test1', primaryLanguage: 'Java', latestTag: 'v0.0.1'},
+    {id: '2', name: 'test2', primaryLanguage: 'Java', latestTag: 'v0.0.1'},
+    {id: '3', name: 'test3', primaryLanguage: 'Java', latestTag: 'v0.0.1'},
+    {id: '4', name: 'test4', primaryLanguage: 'Java', latestTag: 'v0.0.1'},
+    {id: '5', name: 'test5', primaryLanguage: 'Java', latestTag: 'v0.0.1'}
   ];
 
-  constructor() { }
+  constructor(private favouritesService: FavouritesService) { }
 
   ngOnInit() {
+  }
+
+  onAddToFavourites(repo: Repo) {
+    this.favouritesService.addToFavourites(repo);
   }
 
 }

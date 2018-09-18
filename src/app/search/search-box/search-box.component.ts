@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SearchService} from '../../shared/search.service';
 
 @Component({
   selector: 'app-search-box',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-box.component.css']
 })
 export class SearchBoxComponent implements OnInit {
-
-  constructor() { }
+  searchVal = '';
+  constructor(private searchService: SearchService) { }
 
   ngOnInit() {
+  }
+
+  onSearch() {
+    this.searchService.search(this.searchVal);
   }
 
 }

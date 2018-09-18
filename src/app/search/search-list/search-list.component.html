@@ -10,9 +10,9 @@
   <tbody>
     <tr *ngFor="let i of tempList">
       <td>{{ i.name }}</td>
-      <td>{{ i.language }}</td>
+      <td>{{ i.primaryLanguage }}</td>
       <td>{{ i.latestTag }}</td>
-      <td>Add</td>
+      <td><a style="cursor: pointer" (click)="onAddToFavourites(i)">Add</a></td>
     </tr>
   </tbody>
 </table>

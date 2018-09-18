@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+
+import { Apollo } from 'apollo-angular';
+import { ApolloBoost, ApolloBoostModule } from 'apollo-angular-boost';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,9 +24,23 @@ import { FavouritesListComponent } from './favourites/favourites-list/favourites
     FavouritesListComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ApolloBoostModule,
+    HttpClientModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ Apollo ],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(boost: ApolloBoost) {
+    boost.create({
+      uri: 'https://api.github.com/graphql',
+      httpOptions: {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer 320c5ba08a2449e39552906e8069aa7f5a58020c'
+        })
+      }
+
+    });
+  }
+}
