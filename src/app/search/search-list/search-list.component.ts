@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   styleUrls: [ './search-list.component.css' ]
 })
 export class SearchListComponent implements OnInit, OnDestroy {
-  tempList: Repo[] = [];
+  repos: Repo[] = [];
 
   private searchSubscription: Subscription;
 
@@ -19,8 +19,9 @@ export class SearchListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.tempList = this.searchService.repoList;
-    this.searchSubscription = this.searchService.result;
+    this.searchSubscription = this.searchService.searchEvent.subscribe(
+      value => this.repos = value
+    );
   }
 
   onAddToFavourites(repo: Repo) {

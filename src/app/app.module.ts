@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { Apollo } from 'apollo-angular';
 import { ApolloBoost, ApolloBoostModule } from 'apollo-angular-boost';
@@ -26,7 +27,8 @@ import { FavouritesListComponent } from './favourites/favourites-list/favourites
   imports: [
     BrowserModule,
     ApolloBoostModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [ Apollo ],
   bootstrap: [ AppComponent ]
