@@ -2,7 +2,15 @@
 
 This project was created based on Shopify's Intern challenge as displayed below. I used Angular as my framework with GitHub API v4 (trying GraphQL for the first time).
 
-The prompt below is copy-pasted from a README file that Shopify provided.
+## Challenges
+
+I found that GitHub documentation for its v4 API and Apollo's documentation was fairly lacking - as someone completely new to GraphQL, it was a hard API to consume because there weren't enough examples that went beyond the basics.
+
+## Overall thoughts
+
+This was a fun exercise that had me combine bootstrap knowledge with Angular components. I learned a lot about GraphQL and grew more eager to try a new project building an API myself.
+
+*The prompt below is copy-pasted from a README file that Shopify provided.*
 
 ---
 
