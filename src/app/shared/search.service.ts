@@ -51,19 +51,18 @@ export class SearchService {
       }
     }).pipe(
       map(result => {
-        result.data.search.edges
-          .forEach((value) => {
-            const id = value.node.id;
-            const name = value.node.nameWithOwner;
-            const url = value.node.url;
-            const primaryLanguage = value.node.primaryLanguage === null
-              ? ''
-              : value.node.primaryLanguage.name;
-            const tag = value.node.releases.edges.length === 0
-              ? ''
-              : value.node.releases.edges[ 0 ].node.tag.name;
-            tempList.push({ id: id, name: name, url: url, primaryLanguage: primaryLanguage, latestTag: tag });
-          });
+        result.data.search.edges.forEach((value) => {
+          const id = value.node.id;
+          const name = value.node.nameWithOwner;
+          const url = value.node.url;
+          const primaryLanguage = value.node.primaryLanguage === null
+            ? ''
+            : value.node.primaryLanguage.name;
+          const tag = value.node.releases.edges.length === 0
+            ? ''
+            : value.node.releases.edges[ 0 ].node.tag.name;
+          tempList.push({ id: id, name: name, url: url, primaryLanguage: primaryLanguage, latestTag: tag });
+        });
         return tempList.slice();
       })
     );

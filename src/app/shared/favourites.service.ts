@@ -13,15 +13,15 @@ export class FavouritesService {
   private _favourites: Repo[] = [];
 
   get favourites(): Repo[] {
-    return this._favourites;
+    return this._favourites.slice();
   }
 
-  addToFavourites(repo: Repo) {
+  addFavourite(repo: Repo) {
     this._favourites.push(repo);
     this.favouritesChanged.emit(this._favourites.slice());
   }
 
-  removeFromFavourites(id: string) {
+  removeFavourite(id: string) {
     this._favourites = this._favourites.filter(repo => repo.id !== id);
     this.favouritesChanged.emit(this._favourites.slice());
   }
