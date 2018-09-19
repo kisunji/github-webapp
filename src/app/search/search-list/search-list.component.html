@@ -9,10 +9,10 @@
   </thead>
   <tbody>
     <tr *ngFor="let i of repos">
-      <td>{{ i.name }}</td>
+      <td><a href="{{ i.url }}">{{ i.name }}</a></td>
       <td>{{ i.primaryLanguage }}</td>
       <td>{{ i.latestTag }}</td>
-      <td><a style="cursor: pointer" (click)="onAddToFavourites(i)">Add</a></td>
+      <td><a *ngIf="!isFavourited(i)" style="cursor: pointer" (click)="onAddToFavourites(i)">Add</a></td>
     </tr>
   </tbody>
 </table>

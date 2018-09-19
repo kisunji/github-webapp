@@ -18,6 +18,10 @@ export class SearchListComponent implements OnInit, OnDestroy {
               private searchService: SearchService) {
   }
 
+  isFavourited(repo: Repo): boolean {
+    return this.favouritesService.favourites.includes(repo);
+  }
+
   ngOnInit() {
     this.searchSubscription = this.searchService.searchEvent.subscribe(
       value => this.repos = value
@@ -25,7 +29,7 @@ export class SearchListComponent implements OnInit, OnDestroy {
   }
 
   onAddToFavourites(repo: Repo) {
-    this.favouritesService.addToFavourites(repo);
+    this.favouritesService.addFavourite(repo);
   }
 
   ngOnDestroy() {
