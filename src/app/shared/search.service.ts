@@ -36,7 +36,6 @@ query GitHubQuery($searchString: String!) {
   providedIn: 'root'
 })
 export class SearchService {
-  searchEvent = new EventEmitter<Repo[]>();
 
   constructor(private apollo: Apollo) {
   }
