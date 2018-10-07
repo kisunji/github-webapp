@@ -1,6 +1,6 @@
 # Github Webapp
 
-This project was created based on Shopify's Intern challenge as displayed below. I used Angular as my framework with GitHub API v4 (trying GraphQL for the first time).
+This project was created based on Shopify's Intern challenge as displayed below (I didn't apply... but I plan to next year!). I used Angular as my framework with GitHub API v4 (trying GraphQL for the first time).
 
 ## Challenges
 
